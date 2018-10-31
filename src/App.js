@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Feed from "./pages/Feed";
+import Panel from "./pages/Panel";
 import Navbar from "./components/Navbar";
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <div>
                 <Navbar>Easy Expend</Navbar>
-                <Feed/>
+                <Panel/>
             </div>
         );
     }
