@@ -13,7 +13,10 @@ class FriendBalance extends Component {
         console.log(expense)
         return (
             <div align="center">
-                {expense.user} : {expense.balance}
+                <div>
+                    {expense.user} : {expense.balance}
+                </div>
+                <br/>
             </div>
         );
     }
