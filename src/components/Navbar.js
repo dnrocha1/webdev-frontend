@@ -1,25 +1,50 @@
 import React, { Component } from 'react';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { Menu, Dropdown, Icon } from 'semantic-ui-react';
+import Avatar from './Avatar'
 
-class Navbar extends Component {
+export default class Navbar extends Component {
+    state = { 
+        activeItem: 'home',
+        currentUsername: 'Daniyel Rocha'
+    };
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
     render() {
-        return(
-            <navbar>
-                <div>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography variant="title" color="inherit">
-                            { this.props.children }
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                </div>
-            </navbar>
+        const { activeItem } = this.state;
+
+        return (
+            <Menu stackable borderless color='teal' inverted size='huge'>
+
+                <Menu.Item name='title' active={activeItem === 'title'} onClick={this.handleItemClick} >
+                    <strong>{ this.props.children }</strong>
+                </Menu.Item>
+
+                <Menu.Menu position='right'>
+
+                    <Dropdown item icon="add"></Dropdown>
+
+                    <Dropdown item icon={null}>
+                        <Icon.Group>
+                            <Icon name="bell outline" />
+                            <Icon name="circle" color="red" corner />
+                        </Icon.Group>
+                    </Dropdown>
+                
+                    <Dropdown item trigger={<Avatar size="30">{this.state.currentUsername}</Avatar>} pointing='top right' icon={null}>
+                        <Dropdown.Menu>
+                            <Dropdown.Item disabled>
+                                <span> Entrou como <strong>{this.state.currentUsername}</strong></span>
+                            </Dropdown.Item>
+                            <Dropdown.Item text="Realizar ALGUMA COISA" icon="usd" />
+                            <Dropdown.Item text="Adicionar amigos" icon="add user" />
+                            <Dropdown.Item text="Sair" icon="sign out" />
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                    <Menu.Item></Menu.Item>
+                </Menu.Menu>
+            </Menu>
         );
     }
 }
-
-export default Navbar;
