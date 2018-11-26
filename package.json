@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.2.2",
     "react": "^16.5.2",
+    "react-avatar": "^3.4.6",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.5",
     "semantic-ui-css": "^2.4.1",

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import { Grid, Image, Rail, Segment } from 'semantic-ui-react';
+
 import Balance from "../components/Balance";
 import FriendBalance from "../components/FriendBalance";
 
-class Feed extends Component {
+class Container extends Component {
     constructor() {
         super();
 
@@ -29,6 +31,18 @@ class Feed extends Component {
     render() {
         return (
             <div>
+                <Grid centered columns={3}>
+                    <Grid.Column>
+                        <Segment>
+                            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                            <p>Another content</p>
+                            <Rail dividing position='left'>
+                                <Segment>Left Content</Segment>
+                            </Rail>
+                            
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
                 <Balance/>
                 <div className="friendBalance">
                     {this.state.expenses.map(
@@ -40,4 +54,4 @@ class Feed extends Component {
     }
 }
 
-export default Feed;
+export default Container;
