@@ -4,9 +4,9 @@ import React, { Component } from 'react';
  * This component displays the current user's balance with a friend.
  */
 class FriendBalance extends Component {
-    constructor() {
+    /*constructor() {
         super();
-    }
+    }*/
     
     render() {
         const expense = this.props.expense;
@@ -14,8 +14,6 @@ class FriendBalance extends Component {
         return (
             <div align="center">
                 {expense.user} : {expense.balance}
-                <br/>
-                <br/>
             </div>
         );
     }

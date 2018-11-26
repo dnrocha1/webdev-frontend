@@ -3,9 +3,9 @@ import ReactAvatar from 'react-avatar';
 
 const genSizeRatio = (username) => {
     if(username.split(" ").length > 1) {
-        return "1.8";
+        return 1.8;
     }
-    return "2.0";
+    return 2.0;
 };
 
 const Avatar = ({ children, size }) => {
