@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 
 import { Grid, Image, Rail, Segment, Tab, TabPane } from 'semantic-ui-react';
 
-import Balance from "../components/Balance";
+import TotalBalance from "../components/TotalBalance";
 import FriendBalance from "../components/FriendBalance";
 import Tabs from '../components/Tabs';
+
+const panes = [
+    { menuItem: 'Tab 1', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
+    { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+    { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+];
+
 
 class Container extends Component {
     constructor() {
         super();
-
         const friendsExpenses = [
             {"key":1,
              "value": {
@@ -35,14 +41,16 @@ class Container extends Component {
             expenses: friendsExpenses
         }
 
-        const panes = [
-            { menuItem: 'Tab 1', render: () => <Tab.Pane attached={false}>Tab 1 Content</Tab.Pane> },
-            { menuItem: 'Tab 2', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
-            { menuItem: 'Tab 3', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
-        ];
+        
 
     }
     render() {
+
+        const tabOptions = [
+            { menuItem: 'Amigos', content: <FriendBalance expenses={this.state.expenses} /> },
+            { menuItem: 'Atividades', content: <span>Atividades</span> }
+        ];
+        
         return (
             <div>
                 {/*<Grid centered columns={3}>
@@ -62,17 +70,16 @@ class Container extends Component {
                 <Grid centered columns={3}>
                 
                     <Grid.Column>
-                        <Balance/>
 
-                        <Tabs>
-                            asdf
-                        </Tabs>
+                        <TotalBalance />
 
-                        <div className="friendBalance">
+                        <Tabs tabs={tabOptions}/>
+                    
+                        {/*<div className="friendBalance">
                             {this.state.expenses.map(
                                 friendExp => <Segment><FriendBalance key={friendExp.key} expense={friendExp.value}/></Segment>
                             )}
-                        </div>
+                        </div>*/}
                     </Grid.Column>
 
                 </Grid>

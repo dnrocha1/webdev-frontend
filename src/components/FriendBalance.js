@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
 
+import { Segment } from 'semantic-ui-react'
+import Avatar from './Avatar';
+
 /**
  * This component displays the current user's balance with a friend.
  */
-class FriendBalance extends Component {
-    /*constructor() {
-        super();
-    }*/
-    
-    render() {
-        const expense = this.props.expense;
-        console.log(expense)
-        return (
-            <div align="center">
-                <div>
-                    {expense.user} : {expense.balance}
-                </div>
-                <br/>
-            </div>
-        );
-    }
-}
+
+
+const FriendBalance = (props) => 
+    props.expenses.map(exp => <Segment><Avatar size="30">{exp.value.user}</Avatar> {exp.value.user} : {exp.value.balance} </Segment>)
 
 export default FriendBalance;
