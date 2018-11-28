@@ -16,13 +16,21 @@ export default class Navbar extends Component {
         return (
             <Menu stackable borderless color='teal' inverted size='huge'>
 
-                <Menu.Item name='title' active={activeItem === 'title'} onClick={this.handleItemClick} >
+                {/*<Menu.Item name='title' /*active={activeItem === 'title'} onClick={this.handleItemClick} >
                     <strong>{ this.props.children }</strong>
+                </Menu.Item>*/}
+
+                <Menu.Item /*active={activeItem === 'title'}*/ onClick={this.handleItemClick}>
+                    <strong>{ this.props.title }</strong>
                 </Menu.Item>
 
                 <Menu.Menu position='right'>
 
-                    <Dropdown item icon="add"></Dropdown>
+                    {/*<Dropdown item icon="add" pointing="top left">
+                        <Dropdown.Menu>
+                            <Dropdown.Item text="Nova despesa" icon="usd"/>
+                        </Dropdown.Menu>
+                    </Dropdown>*/}
 
                     <Dropdown item icon={null}>
                         <Icon.Group>
