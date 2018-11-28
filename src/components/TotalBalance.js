@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Statistic, Icon, Segment, Button } from 'semantic-ui-react';
+import { Statistic, Icon, Segment } from 'semantic-ui-react';
 
 /**
  * This component displays the user balance.
@@ -20,13 +20,6 @@ class TotalBalance extends Component {
                         <Statistic.Label>Devendo</Statistic.Label>
                     </Statistic>
                 </Statistic.Group>
-
-                <br/>
-
-                <Button.Group fluid>
-                    <Button color='teal'>Adicionar gastos</Button>
-                    <Button color='orange'>Quitar gastos</Button>
-                </Button.Group>
 
             </Segment>
         );

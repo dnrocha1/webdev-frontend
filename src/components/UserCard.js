@@ -1,11 +1,7 @@
 import React from 'react';
-import { Segment, Card, Feed } from "semantic-ui-react";
+import { Card, Feed } from "semantic-ui-react";
 import Avatar from "../components/Avatar";
 
-{/*<Segment basic>
-    <Avatar size='30'>{ props.username }</Avatar>
-    <span>&nbsp;&nbsp;&nbsp;{ props.username }</span>
-</Segment>*/}
 const abs = value => Math.abs(value);
 
 const UserCard = (props) => 

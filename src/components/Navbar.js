@@ -11,16 +11,11 @@ export default class Navbar extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
     render() {
-        const { activeItem } = this.state;
 
         return (
             <Menu stackable borderless color='teal' inverted size='huge'>
 
-                {/*<Menu.Item name='title' /*active={activeItem === 'title'} onClick={this.handleItemClick} >
-                    <strong>{ this.props.children }</strong>
-                </Menu.Item>*/}
-
-                <Menu.Item /*active={activeItem === 'title'}*/ onClick={this.handleItemClick}>
+                <Menu.Item>
                     <strong>{ this.props.title }</strong>
                 </Menu.Item>
 

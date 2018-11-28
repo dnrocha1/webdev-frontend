@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import { Segment, Grid, Divider, Header } from 'semantic-ui-react'
-import Avatar from './Avatar';
+import { Grid, Divider, Header } from 'semantic-ui-react'
 import UserCard from './UserCard'
 
 /**
