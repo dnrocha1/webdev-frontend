@@ -6,14 +6,19 @@ import TotalBalance from "../components/TotalBalance";
 import FriendBalance from "../components/FriendBalance";
 import Tabs from '../components/Tabs';
 
-const panes = [
-    { menuItem: 'Tab 1', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
-    { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-    { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-];
-
+import api from "../services/api";
 
 class Container extends Component {
+
+    componentDidMount() {
+        this.fetchExpenses();
+    };
+
+    fetchExpenses = async () => {
+        const response = await api.get('/user');
+        console.log(response.data);
+    };
+
     constructor() {
         super();
         const friendsExpenses = [
