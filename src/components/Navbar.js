@@ -21,11 +21,11 @@ export default class Navbar extends Component {
 
                 <Menu.Menu position='right'>
 
-                    {/*<Dropdown item icon="add" pointing="top left">
+                    <Dropdown item icon="add" pointing="top left">
                         <Dropdown.Menu>
                             <Dropdown.Item text="Nova despesa" icon="usd"/>
                         </Dropdown.Menu>
-                    </Dropdown>*/}
+                    </Dropdown>
 
                     <Dropdown item icon={null}>
                         <Icon.Group>
@@ -34,7 +34,7 @@ export default class Navbar extends Component {
                         </Icon.Group>
                     </Dropdown>
                 
-                    <Dropdown item trigger={<Avatar size="30">{this.state.currentUsername}</Avatar>} pointing='top right' icon={null}>
+                    <Dropdown item trigger={<Avatar size="30">{this.state.currentUsername}</Avatar>} pointing='top right' icon={null} style={{ marginRight:30 }}>
                         <Dropdown.Menu>
                             <Dropdown.Item disabled>
                                 <span> Entrou como <strong>{this.state.currentUsername}</strong></span>
@@ -45,7 +45,6 @@ export default class Navbar extends Component {
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <Menu.Item></Menu.Item>
                 </Menu.Menu>
             </Menu>
         );

@@ -6,21 +6,13 @@ import TotalBalance from "../components/TotalBalance";
 import FriendBalance from "../components/FriendBalance";
 import Tabs from '../components/Tabs';
 
-import api from "../services/api";
 
 class Container extends Component {
 
-    componentDidMount() {
-        this.fetchExpenses();
-    };
+    
 
-    fetchExpenses = async () => {
-        const response = await api.get('/user');
-        console.log(response.data);
-    };
-
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         const friendsExpenses = [
             {"key":1,
              "value": {
@@ -43,22 +35,24 @@ class Container extends Component {
         ]
 
         this.state = {
-            expenses: friendsExpenses
+            expenses: friendsExpenses,
+            transactions: []
         }
 
         
 
+        
     }
+
     render() {
 
         const tabOptions = [
             { menuItem: 'Amigos', content: <FriendBalance expenses={this.state.expenses} /> },
             { menuItem: 'Atividades', content: <span>Atividades</span> }
         ];
-        
         return (
             <div>
-                <Grid centered columns={3}>
+                <Grid centered columns={3} stackable>
                 
                     <Grid.Column>
 
