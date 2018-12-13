@@ -4,18 +4,16 @@ import './App.css';
 import Container from "./pages/Container";
 import Navbar from "./components/Navbar";
 
-import api from "./services/api";
-
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = { 
             transactions : []
         };
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         this.fetchExpenses();
         this.fetchUsers();
         this.fetchGroups();
@@ -37,13 +35,13 @@ class App extends Component {
         const response = await api.get('/group');
         console.log(response.data)
         this.setState({ groups: response.data });
-    }
+    }*/
 
     render() {
         return (
             <div>
                 <Navbar title="Easy Expand" />
-                <Container transactions={this.state.transactions} />
+                <Container />
             </div>
         );
     }

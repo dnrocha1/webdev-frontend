@@ -6,6 +6,7 @@ import TotalBalance from "../components/TotalBalance";
 import FriendBalance from "../components/FriendBalance";
 import Tabs from '../components/Tabs';
 
+import api from "../services/api";
 
 class Container extends Component {
 
@@ -39,15 +40,27 @@ class Container extends Component {
             transactions: []
         }
 
-        
-
-        
+        this.fetchExpenses();
+        this.fetchUsers();
     }
+
+    fetchExpenses = async () => {
+        const response = await api.get('/transaction');
+        //console.log(response.data);
+        this.setState({ transactions: response.data });
+    };
+
+    fetchUsers = async () => {
+        const response = await api.get('/user');
+        //console.log(response.data)
+        this.setState({ users: response.data });
+    }   
 
     render() {
 
         const tabOptions = [
-            { menuItem: 'Amigos', content: <FriendBalance expenses={this.state.expenses} /> },
+            //{ menuItem: 'Amigos', content: <FriendBalance expenses={this.state.expenses} /> },
+            { menuItem: 'Amigos', content: <FriendBalance /> },
             { menuItem: 'Atividades', content: <span>Atividades</span> }
         ];
         return (
