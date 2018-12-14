@@ -6,61 +6,12 @@ import TotalBalance from "../components/TotalBalance";
 import FriendBalance from "../components/FriendBalance";
 import Tabs from '../components/Tabs';
 
-import api from "../services/api";
-
 class Container extends Component {
-
-    
-
-    constructor(props) {
-        super(props);
-        const friendsExpenses = [
-            {"key":1,
-             "value": {
-                user: "jeff",
-                balance: 51.50
-                }
-            },
-            {"key":2,
-            "value": {
-                user: "lorena",
-                balance: 10.00
-                }
-            },
-            {"key": 3,
-            "value":{
-                user: "rafael",
-                balance: -7.50
-                }
-            }
-        ]
-
-        this.state = {
-            expenses: friendsExpenses,
-            transactions: []
-        }
-
-        this.fetchExpenses();
-        this.fetchUsers();
-    }
-
-    fetchExpenses = async () => {
-        const response = await api.get('/transaction');
-        //console.log(response.data);
-        this.setState({ transactions: response.data });
-    };
-
-    fetchUsers = async () => {
-        const response = await api.get('/user');
-        //console.log(response.data)
-        this.setState({ users: response.data });
-    }   
 
     render() {
 
         const tabOptions = [
-            //{ menuItem: 'Amigos', content: <FriendBalance expenses={this.state.expenses} /> },
-            { menuItem: 'Amigos', content: <FriendBalance /> },
+            { menuItem: 'Amigos', content: <FriendBalance debt={this.props.debt} receiving={this.props.receiving} /> },
             { menuItem: 'Atividades', content: <span>Atividades</span> }
         ];
         return (
@@ -69,7 +20,7 @@ class Container extends Component {
                 
                     <Grid.Column>
 
-                        <TotalBalance />
+                        <TotalBalance debt={this.props.debt} receiving={this.props.receiving} />
 
                         <div style={{ marginTop:10, marginBottom:10 }}>
                             <Button.Group fluid>

@@ -4,44 +4,35 @@ import './App.css';
 import Container from "./pages/Container";
 import Navbar from "./components/Navbar";
 
+import api from "./services/api";
+
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = { 
-            transactions : []
+            userData: {
+                debt: [],
+                receiving: []
+            },
+            currentUserId: '5c11b591802ea7021dbc086c',
         };
+
+        this.fetchUserData();
     }
 
-    /*componentDidMount() {
-        this.fetchExpenses();
-        this.fetchUsers();
-        this.fetchGroups();
-    };
-
-    fetchExpenses = async () => {
-        const response = await api.get('/transaction');
-        console.log(response.data);
-        this.setState({ transactions: response.data });
-    };
-
-    fetchUsers = async () => {
-        const response = await api.get('/user');
-        console.log(response.data)
-        this.setState({ users: response.data });
-    }   
-
-    fetchGroups = async () => {
-        const response = await api.get('/group');
-        console.log(response.data)
-        this.setState({ groups: response.data });
-    }*/
+    fetchUserData = async () => {
+        const response = await api.get('/user/' + this.state.currentUserId);
+        this.setState(() => ({
+            userData: response.data
+        }));
+    }
 
     render() {
         return (
             <div>
                 <Navbar title="Easy Expand" />
-                <Container />
+                <Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} />
             </div>
         );
     }

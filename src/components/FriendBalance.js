@@ -3,35 +3,14 @@ import React, { Component } from 'react';
 import { Grid, Divider, Header } from 'semantic-ui-react'
 import UserCard from './UserCard'
 
-import api from "../services/api";
-
 /**
  * This component displays the current user's balance with a friend.
  */
 
 class FriendBalance extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            /*userOwned: ['Devem a você', 'Deve a você'],
-            userOwns: ['Você deve', 'Você deve']*/
-            currentUserId: '5c11b591802ea7021dbc086c',
-            userData: {}
-        }
-
-        this.fetchUserData();
-    }
-
-    fetchUserData = async () => {
-        const response = await api.get('/user/' + this.state.currentUserId);
-        //console.log(response.data)
-        this.setState({ userData: response.data });
-        this.getDebts(response.data);
-        this.getReceivings(response.data);
-    }
 
     getDebts = (data) => {
-        const aux = data.debt.map(exp => {
+        const aux = data.map(exp => {
             let obj = {};
             obj.transaction = exp._id
             obj.user = exp.paidByUser
@@ -39,7 +18,6 @@ class FriendBalance extends Component {
             return obj;
         }                                                           
         );
-        console.log(aux)
 
         const usersMap = {};
 
@@ -57,11 +35,12 @@ class FriendBalance extends Component {
         });
 
         const debts = Object.values(usersMap).map(v => v);
-        this.setState({ debts: debts });
+        //this.setState({ debts: debts });
+        return debts
     }
 
     getReceivings = (data) => {
-        const aux = data.receiving.map(exp => {
+        const aux = data.map(exp => {
             return exp.transactionMembers.map(member => {
                 let obj = {};
                 obj.transaction = exp._id;
@@ -91,7 +70,8 @@ class FriendBalance extends Component {
         });
 
         const receivings = Object.values(usersMap).map(v => v);
-        this.setState({ receivings: receivings });
+        //this.setState({ receivings: receivings });
+        return receivings;
     }
 
 
@@ -104,15 +84,15 @@ class FriendBalance extends Component {
 
                     <Grid.Column>
                         <Header sub>Você deve</Header>
-                        { this.state.debts && this.state.debts.map(
-                            debt => <UserCard username={ debt.name } value={ debt.totalDebt } message="Você deve" />
+                        { this.getDebts(this.props.debt) && this.getDebts(this.props.debt).map(
+                            debt => <UserCard key={debt._id} username={ debt.name } value={ debt.totalDebt } message="Você deve" />
                         ) }
                     </Grid.Column>
 
                     <Grid.Column>
                         <Header sub>Devem a você</Header>
-                        { this.state.receivings && this.state.receivings.map(
-                            receiving => <UserCard username={ receiving.name } value={ receiving.totalReceiving } message="Deve a você" />
+                        { this.getReceivings(this.props.receiving) && this.getReceivings(this.props.receiving).map(
+                            receiving => <UserCard key={receiving._id} username={ receiving.name } value={ receiving.totalReceiving } message="Deve a você" />
                         ) }
                     </Grid.Column>
 
