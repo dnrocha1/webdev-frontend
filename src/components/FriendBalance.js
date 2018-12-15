@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Divider, Header } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import UserCard from './UserCard'
 
 /**
@@ -77,8 +77,7 @@ class FriendBalance extends Component {
 
     render() {
         return (
-            <Grid columns={2} stackable textAlign='center' padded>
-                <Divider vertical />
+            <Grid columns={2} divided stackable textAlign='center' padded>
 
                 <Grid.Row>
 
