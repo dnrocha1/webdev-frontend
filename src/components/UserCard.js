@@ -3,6 +3,7 @@ import { Card, Feed } from "semantic-ui-react";
 import Avatar from "../components/Avatar";
 
 const abs = value => Math.abs(value);
+const round = value => Math.round(value * 100)/100
 
 const UserCard = (props) => 
 
@@ -19,7 +20,7 @@ const UserCard = (props) =>
                     { props.username }
                 </Feed.Summary>
                 <Feed.Event>
-                    { props.message } R${ abs(props.value) }
+                    { props.message } R${ round(abs(props.value)) }
                 </Feed.Event>
             </Feed.Content>
             </Feed.Event>

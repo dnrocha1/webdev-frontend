@@ -28,12 +28,13 @@ class ModalTransaction extends Component {
     handleSubmit = () => {
         const {description, value, radioSelection, selectedCbs, paymentDate } = this.state;
         const data = { description, totalAmount:value, transactionDate:paymentDate, paidByUser: radioSelection, 
-            transactionMembers: selectedCbs.map(user => ({
+            transactionMembers: selectedCbs.filter(elem => elem !== radioSelection).map(user => ({
                 user,
-                userAmount: value / (selectedCbs.length+1)
+                userAmount: value / (selectedCbs.length)
             })) 
         }
         this.props.post(data);
+        this.props.close();
     }
 
     render() {

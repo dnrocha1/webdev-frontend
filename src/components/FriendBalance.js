@@ -10,6 +10,7 @@ import UserCard from './UserCard'
 class FriendBalance extends Component {
 
     getDebts = (data) => {
+        console.log(data)
         const aux = data.map(exp => {
             let obj = {};
             obj.transaction = exp._id

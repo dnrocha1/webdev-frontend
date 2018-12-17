@@ -86,7 +86,7 @@ const TotalBalance = props => {
                     <Statistic.Value>
                         <Icon name="usd" />
                         {/*<span style={{color:'red'}}>500,00</span>*/}
-                        { Math.abs(getBalance(props)) }
+                        { Math.round(Math.abs(getBalance(props)) * 100)/100 }
                     </Statistic.Value>
                     <Statistic.Label>{ getBalance(props) > 0 ? 'a receber' : 'devendo' }</Statistic.Label>
                 </Statistic>

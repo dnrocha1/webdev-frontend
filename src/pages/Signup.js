@@ -21,7 +21,7 @@ class Signup extends Component {
         } else if (password === confirmpswd) {
             try {
                 const data = { name, email, password };
-                const response = await api.post('/user', data)
+                await api.post('/user', data)
                 this.props.history.push('/login');  
             } catch(exception) {
                 this.setState({signupFailed: true});

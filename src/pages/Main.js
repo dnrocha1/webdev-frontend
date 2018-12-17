@@ -65,7 +65,7 @@ class Main extends Component {
             <div>
                 <Navbar title={this.state.appTitle} userName={this.state.userData.name}/>
                 <Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
-                post={this.postTransaction} allUsers={this.state.allUsers} />
+                post={this.postTransaction} allUsers={this.state.allUsers} currentUser={this.state.currentUserId} />
             </div>
         );
     }
