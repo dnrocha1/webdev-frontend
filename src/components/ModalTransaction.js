@@ -69,7 +69,7 @@ class ModalTransaction extends Component {
                 </Modal.Content>
 
                 <Modal.Actions>
-                    <Button negative content='Cancelar'  />
+                    <Button negative content='Cancelar' onClick={this.props.close}  />
                     <Button positive content='Confirmar' onClick={this.handleSubmit} />
                 </Modal.Actions>
 
