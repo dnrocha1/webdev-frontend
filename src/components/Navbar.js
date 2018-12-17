@@ -31,11 +31,11 @@ class Navbar extends Component {
 
                 <Menu.Menu position='right'>
 
-                    <Dropdown item icon="add" pointing="top left">
+                    {/*<Dropdown item icon="add" pointing="top left">
                         <Dropdown.Menu>
                             <Dropdown.Item text="Nova despesa" icon="usd"/>
                         </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown>*/}
 
                     <Dropdown item icon={null}>
                         <Icon.Group>

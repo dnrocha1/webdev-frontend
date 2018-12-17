@@ -33,7 +33,7 @@ class Container extends Component {
                         <div style={{ marginTop:10, marginBottom:10 }}>
                             <Button.Group fluid>
                                 <Button color='teal' onClick={ this.show }>Adicionar despesa</Button>
-                                <Button color='orange'>Quitar gastos</Button>
+                                <Button color='orange'>Quitar despesa</Button>
                             </Button.Group>
                         </div>
 

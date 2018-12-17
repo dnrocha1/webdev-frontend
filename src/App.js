@@ -5,6 +5,7 @@ import './App.css';
 import LoginPage from "./pages/Login";
 import Signup from './pages/Signup';
 import Main from "./pages/Main";
+import DefaultPage from './pages/DefaultPage';
 
 const App = () => (
     <BrowserRouter>
@@ -12,6 +13,7 @@ const App = () => (
             <Route path="/" component={Main} exact={true} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={Signup} />
+            <Route component={DefaultPage} />
         </Switch>
     </BrowserRouter>
 );
