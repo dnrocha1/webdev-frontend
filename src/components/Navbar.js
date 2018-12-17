@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 
 import { Menu, Dropdown, Icon } from 'semantic-ui-react';
+import { withRouter } from "react-router-dom";
 import Avatar from './Avatar'
 
-export default class Navbar extends Component {
-    state = { 
-        activeItem: 'home',
-        currentUsername: 'Daniyel Rocha'
-    };
+class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            activeItem: 'home',
+            currentUsername: 'Daniyel Rocha'
+        };
+    }
+
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+    signOut = () => {
+        localStorage.clear();
+        this.props.history.push('/login');
+    }
 
     render() {
 
@@ -34,14 +44,14 @@ export default class Navbar extends Component {
                         </Icon.Group>
                     </Dropdown>
                 
-                    <Dropdown item trigger={<Avatar size="30">{this.state.currentUsername}</Avatar>} pointing='top right' icon={null} style={{ marginRight:30 }}>
+                    <Dropdown item trigger={<Avatar size="30">{this.props.userName}</Avatar>} pointing='top right' icon={null} style={{ marginRight:30 }}>
                         <Dropdown.Menu>
                             <Dropdown.Item disabled>
-                                <span> Entrou como <strong>{this.state.currentUsername}</strong></span>
+                                <span> Entrou como <strong>{this.props.userName}</strong></span>
                             </Dropdown.Item>
-                            <Dropdown.Item text="Realizar ALGUMA COISA" icon="usd" />
-                            <Dropdown.Item text="Adicionar amigos" icon="add user" />
-                            <Dropdown.Item text="Sair" icon="sign out" />
+                            {/*<Dropdown.Item text="Realizar ALGUMA COISA" icon="usd" />
+                            <Dropdown.Item text="Adicionar amigos" icon="add user" />*/}
+                            <Dropdown.Item text="Sair" icon="sign out" onClick={this.signOut} />
                         </Dropdown.Menu>
                     </Dropdown>
 
@@ -50,3 +60,5 @@ export default class Navbar extends Component {
         );
     }
 }
+
+export default withRouter(Navbar);

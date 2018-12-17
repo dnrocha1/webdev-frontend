@@ -17,6 +17,7 @@ class Main extends Component {
         this.state = { 
             appTitle: 'Easy Expand',
             userData: {
+                name: '',
                 debt: [],
                 receiving: []
             },
@@ -62,7 +63,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Navbar title={this.state.appTitle} />
+                <Navbar title={this.state.appTitle} userName={this.state.userData.name}/>
                 <Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
                 post={this.postTransaction} allUsers={this.state.allUsers} />
             </div>
