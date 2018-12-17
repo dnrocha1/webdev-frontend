@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch} from "react-router-dom";
-import './App.css';
 
-import LoginPage from "./pages/Login";
-import Main from "./pages/Main";
+import Container from "../pages/Container";
+import Navbar from "../components/Navbar";
+import { withRouter } from "react-router-dom";
+import api from "../services/api";
 
-import api from "./services/api";
-
-class App extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
-
+        
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            props.history.push('/login');
+        }
+        
         this.state = { 
             userData: {
                 debt: [],
@@ -21,7 +24,7 @@ class App extends Component {
             userLogged: false,
             checked: false,
             
-            currentUserId: '5c11b591802ea7021dbc086c',
+            currentUserId: userId
         };
 
         this.handleLogin = this.handleLogin.bind(this);
@@ -57,22 +60,13 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" component={Main} exact={true} />
-                    <Route path="/login" component={LoginPage} />
-                </Switch>
-                
-                {/*<Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
-                post={this.postTransaction} allUsers={this.state.allUsers} />*/}
-                
-                {/*<Main debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
+            <div>
+                <Navbar title="Easy Expand" />
+                <Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
                 post={this.postTransaction} allUsers={this.state.allUsers} />
-
-                <Login />*/}
-            </BrowserRouter>
+            </div>
         );
     }
 }
 
-export default App;
+export default withRouter(Main);
