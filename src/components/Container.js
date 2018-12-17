@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import { Grid, Button } from 'semantic-ui-react';
 
-import TotalBalance from "../components/TotalBalance";
-import FriendBalance from "../components/FriendBalance";
-import Tabs from '../components/Tabs';
-import ModalTransaction from "../components/ModalTransaction";
+import TotalBalance from "./TotalBalance";
+import FriendBalance from "./FriendBalance";
+import Tabs from './Tabs';
+import ModalTransaction from "./ModalTransaction";
 class Container extends Component {
 
-    state = { modalCtrl: true }
+    state = { modalCtrl: false }
 
     show = () => this.setState({ modalCtrl: true })
     close = () => this.setState({ modalCtrl: false })

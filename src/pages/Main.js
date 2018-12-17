@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Container from "../pages/Container";
+import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import { withRouter } from "react-router-dom";
 import api from "../services/api";
@@ -15,6 +15,7 @@ class Main extends Component {
         }
         
         this.state = { 
+            appTitle: 'Easy Expand',
             userData: {
                 debt: [],
                 receiving: []
@@ -61,7 +62,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Navbar title="Easy Expand" />
+                <Navbar title={this.state.appTitle} />
                 <Container debt={this.state.userData.debt} receiving={this.state.userData.receiving} 
                 post={this.postTransaction} allUsers={this.state.allUsers} />
             </div>
